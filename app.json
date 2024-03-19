@@ -40,7 +40,7 @@
     "STICKER_PACKNAME": {
       "description": "sticker pack info",
       "required": false,
-      "value": "+918293838182,✘LuciZR✘"
+      "value": "✘LuciZR✘"
     },
     "HEROKU_APP_NAME": {
       "description": "Heroku app name, same as above entered.",
