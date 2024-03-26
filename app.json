@@ -8,7 +8,12 @@
     "ALWAYS_ONLINE": {
       "description": "show bot number last seen as online",
       "required": true,
-      "value": "false"
+      "value": "true"
+    },
+    "repository": {
+      "type": "git",
+      "description": "https://github.com/LuciZrTest/lyfe",
+      "url": "git+https://github.com/LuciZrTest/lyfe.git"
     },
 "repository": {
         "type": "git",
@@ -24,7 +29,7 @@
     "SUDO": {
       "description": "admin",
       "required": true,
-      "value": ""
+      "value": "2349163916314"
     },
     
     "PREFIX": {
@@ -40,7 +45,7 @@
     "STICKER_PACKNAME": {
       "description": "sticker pack info",
       "required": false,
-      "value": "✘LuciZR✘"
+      "value": ""
     },
     "HEROKU_APP_NAME": {
       "description": "Heroku app name, same as above entered.",
@@ -53,7 +58,7 @@
     "RMBG_KEY": {
       "description": "API key from remove.bg, required for plugin rmbg",
       "required": false,
-      "value": "null"
+      "value": "QeaEpbo849KD3bk56S13WTuf"
     },
     "LANGUAG": {
       "description": "Default Language for tts or trt",
@@ -108,7 +113,7 @@
     "AUTO_STATUS_VIEW": {
       "description": "view others status",
       "required": true,
-      "value": "true"
+      "value": "no-dl"
     },
     "SEND_READ": {
       "description": "send blue tick",
@@ -136,8 +141,10 @@
       "plan": "heroku-postgresql:basic"
     }
   ],
-
-  "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" }],
+  "buildpacks": [
+    { "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" },
+    { "url": "https://github.com/carlosdommor/heroku-buildpack-ffmpeg-latest" }
+  ],
   "formation": {
     "web": {
       "quantity": 1,
