@@ -13,7 +13,7 @@ bot(
 				(!match || isNaN(match) || match < 1 || match > 47))
 		)
 			return await message.send(
-				'*Example :*\nfancy Hi\nfancy 7 replying text msg'
+				'*Example :*\nfancy 𝖀𝖑𝖙-𝕬𝕽\nfancy 7 replying text msg'
 			)
 		if (message.reply_message.text) {
 			return await message.send(
