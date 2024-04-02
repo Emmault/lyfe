@@ -1,6 +1,7 @@
-const bot = require('../lib/events')
-const { addSpace, textToStylist, PREFIX, getUptime, PLUGINS, getRam } = require('../lib/')
-const { VERSION } = require('../config')
+const bot = require('../lib/events');
+const { addSpace, textToStylist, PREFIX, getUptime, PLUGINS, getRam } = require('../lib/');
+
+// Help command to display available commands
 bot.addCommand(
   {
     pattern: 'help ?(.*)',
@@ -8,13 +9,8 @@ bot.addCommand(
     dontAddCommandList: true,
   },
   async (message, match) => {
-    const sorted = bot.commands.sort((a, b) => {
-      if (a.name && b.name) {
-        return a.name.localeCompare(b.name)
-      }
-      return 0
-    })
-    const date = new Date()
+    const sorted = bot.commands.filter(command => !command.dontAddCommandList && command.pattern !== undefined).sort((a, b) => a.name.localeCompare(b.name));
+    const date = new Date();
     let CMD_HELP = `╭────────────────╮
 						𝙼𝙸𝙰 𝙼𝙳 v2.0 ⚠︎
 ╰────────────────╯
@@ -31,21 +27,16 @@ bot.addCommand(
 │ Uptime : ${getUptime('t')}
 ╰────────────────
 ╭────────────────
-`
-    sorted.map(async (command, i) => {
-      if (command.dontAddCommandList === false && command.pattern !== undefined) {
-        CMD_HELP += `│ ${i + 1} ${addSpace(i + 1, sorted.length)}${textToStylist(
-          command.name.toUpperCase(),
-          'mono'
-        )}\n`
-      }
-    })
-
-    CMD_HELP += `╰────────────────`
-    return await message.send('```' + CMD_HELP + '```')
+`;
+    sorted.forEach((command, i) => {
+      CMD_HELP += `│ ${i + 1} ${addSpace(i + 1, sorted.length)}${textToStylist(command.name.toUpperCase(), 'mono')}\n`;
+    });
+    CMD_HELP += `╰────────────────`;
+    return await message.send('```' + CMD_HELP + '```');
   }
-)
+);
 
+// List command to display a list of available commands and their descriptions
 bot.addCommand(
   {
     pattern: 'list ?(.*)',
@@ -53,21 +44,16 @@ bot.addCommand(
     dontAddCommandList: true,
   },
   async (message, match) => {
-    let msg = ''
-    const sorted = bot.commands.sort((a, b) => {
-      if (a.name && b.name) {
-        return a.name.localeCompare(b.name)
-      }
-      return 0
-    })
-    sorted.map(async (command, index) => {
-      if (command.dontAddCommandList === false && command.pattern !== undefined) {
-        msg += `${index + 1} ${command.name}\n${command.desc}\n\n`
-      }
-    })
-    await message.send('```' + msg.trim() + '```')
+    let msg = '';
+    const sorted = bot.commands.filter(command => !command.dontAddCommandList && command.pattern !== undefined).sort((a, b) => a.name.localeCompare(b.name));
+    sorted.forEach((command, index) => {
+      msg += `${index + 1} ${command.name}\n${command.desc}\n\n`;
+    });
+    await message.send('```' + msg.trim() + '```');
   }
-)
+);
+
+// Menu command to display a categorized list of available commands
 bot.addCommand(
   {
     pattern: 'menu ?(.*)',
@@ -75,17 +61,15 @@ bot.addCommand(
     dontAddCommandList: true,
   },
   async (message, match) => {
-    const commands = {}
-    bot.commands.map(async (command, index) => {
-      if (command.dontAddCommandList === false && command.pattern !== undefined) {
-        let cmdType = command.type.toLowerCase()
-        if (!commands[cmdType]) commands[cmdType] = []
-        let isDiabled = command.active === false
-        let cmd = command.name.trim()
-        commands[cmdType].push(isDiabled ? cmd + ' [disabled]' : cmd)
-      }
-    })
-    const date = new Date()
+    const commands = {};
+    bot.commands.filter(command => !command.dontAddCommandList && command.pattern !== undefined).forEach(command => {
+      const cmdType = command.type.toLowerCase();
+      if (!commands[cmdType]) commands[cmdType] = [];
+      const isDisabled = command.active === false;
+      const cmd = command.name.trim();
+      commands[cmdType].push(isDisabled ? `${cmd} [disabled]` : cmd);
+    });
+    const date = new Date();
     let msg = `\`\`\`╭═══ 𝙼𝙸𝙰 𝙼𝙳 v2.0 ⚠︎ ═══⊷
 ┃❃╭──────────────
 ┃❃│ Prefix : ${PREFIX}
@@ -98,22 +82,19 @@ bot.addCommand(
 ┃❃│ Ram : ${getRam()}
 ┃❃│ Uptime : ${getUptime('t')}
 ┃❃╰───────────────
-╰═════════════════⊷\`\`\`\n`
+╰═════════════════⊷\`\`\`\n`;
 
     if (match && commands[match]) {
-      msg += ` ╭─❏ ${textToStylist(match.toLowerCase(), 'smallcaps')} ❏\n`
-      for (const plugin of commands[match])
-        msg += ` │ ${textToStylist(plugin.toUpperCase(), 'mono')}\n`
-      msg += ` ╰─────────────────`
-
-      return await message.send(msg)
+      msg += ` ╭─❏ ${textToStylist(match.toLowerCase(), 'smallcaps')} ❏\n`;
+      commands[match].forEach(plugin => msg += ` │ ${textToStylist(plugin.toUpperCase(), 'mono')}\n`);
+      msg += ` ╰─────────────────`;
+    } else {
+      for (const command in commands) {
+        msg += ` ╭─❏ ${textToStylist(command.toLowerCase(), 'smallcaps')} ❏\n`;
+        commands[command].forEach(plugin => msg += ` │ ${textToStylist(plugin.toUpperCase(), 'mono')}\n`);
+        msg += ` ╰─────────────────\n`;
+      }
     }
-    for (const command in commands) {
-      msg += ` ╭─❏ ${textToStylist(command.toLowerCase(), 'smallcaps')} ❏\n`
-      for (const plugin of commands[command])
-        msg += ` │ ${textToStylist(plugin.toUpperCase(), 'mono')}\n`
-      msg += ` ╰─────────────────\n`
-    }
-    await message.send(msg.trim())
+    await message.send(msg.trim());
   }
-)
+);
