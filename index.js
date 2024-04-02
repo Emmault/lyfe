@@ -1,7 +1,7 @@
 const { Client, logger } = require('./lib/client');
 const { DATABASE, VERSION } = require('./config');
 const { stopInstance } = require('./lib/pm2');
-const { saveContact, autoSaveContacts } = require('./lib/contacts'); // Import the contacts module
+const { saveContact, autoSaveContacts } = require('./lib/contacts.js'); // Import the contacts module
 
 const start = async () => {
   logger.info(`levanter ${VERSION}`);
