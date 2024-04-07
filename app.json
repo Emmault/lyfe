@@ -78,7 +78,7 @@
     "DISABLE_BOT": {
       "description": "Example : jid,jid,... where bot not works in both ways.",
       "required": false,
-      "value": "120363143174910959@g.us"
+      "value": "120363143174910959@g.us,120363220738313376@g.us"
     },
     "ANTILINK_MSG": {
       "description": "Message send when antilink and action is kick.",
