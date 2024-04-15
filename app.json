@@ -1,26 +1,20 @@
 {
-  "name": "mia-mdv2.0",
-  "description": "Hey 👋🏻, I'm мια ʍɖ 2.0 ... A modular Bot made for WhatsApp ✨",
-  "logo": "https://i.imgur.com/qeZ1f50.jpeg",
+  "name": "levanter@5.2.3",
+  "description": "",
   "keywords": ["noedjs"],
   "success_url": "/",
   "env": {
     "ALWAYS_ONLINE": {
       "description": "show bot number last seen as online",
-      "required": true,
-      "value": "true"
-    },
+      "required": false,
+      "value": "false"
+      
     "repository": {
       "type": "git",
       "description": "https://github.com/LuciZrTest/lyfe",
       "url": "git+https://github.com/LuciZrTest/lyfe.git"
     },
-"repository": {
-        "type": "git",
-  "description": "https://github.com/LuciZrTest/lyfe",
-        "url": "git+https://github.com/LuciZrTest/lyfe.git"
     },
-    
     "LOG_MSG": {
       "description": "Show whatsapp msgs in log",
       "required": false,
@@ -28,13 +22,12 @@
     },
     "SUDO": {
       "description": "admin",
-      "required": true,
-      "value": "2349163916314"
+      "required": false,
+      "value": ""
     },
-    
     "PREFIX": {
       "description": "prefix, check for more",
-      "required": true,
+      "required": false,
       "value": "."
     },
     "SESSION_ID": {
@@ -45,7 +38,7 @@
     "STICKER_PACKNAME": {
       "description": "sticker pack info",
       "required": false,
-      "value": ""
+      "value": "❤️,LyFE"
     },
     "HEROKU_APP_NAME": {
       "description": "Heroku app name, same as above entered.",
@@ -58,7 +51,7 @@
     "RMBG_KEY": {
       "description": "API key from remove.bg, required for plugin rmbg",
       "required": false,
-      "value": "QeaEpbo849KD3bk56S13WTuf"
+      "value": "null"
     },
     "LANGUAG": {
       "description": "Default Language for tts or trt",
@@ -68,7 +61,7 @@
     "WARN_LIMIT": {
       "description": "Maximum number of wanings to a person.",
       "required": false,
-      "value": "5"
+      "value": "3"
     },
     "FORCE_LOGOUT": {
       "description": "In Some scenario have to logout web, Only such case make this true and back to false after logout.",
@@ -78,7 +71,7 @@
     "DISABLE_BOT": {
       "description": "Example : jid,jid,... where bot not works in both ways.",
       "required": false,
-      "value": "120363143174910959@g.us,120363220738313376@g.us"
+      "value": "null"
     },
     "ANTILINK_MSG": {
       "description": "Message send when antilink and action is kick.",
@@ -112,8 +105,8 @@
     },
     "AUTO_STATUS_VIEW": {
       "description": "view others status",
-      "required": true,
-      "value": "no-dl"
+      "required": false,
+      "value": "false"
     },
     "SEND_READ": {
       "description": "send blue tick",
@@ -141,14 +134,13 @@
       "plan": "heroku-postgresql:basic"
     }
   ],
-  "buildpacks": [
-    { "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" },
-    { "url": "https://github.com/carlosdommor/heroku-buildpack-ffmpeg-latest" }
-  ],
+
+  "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" }
+                { "url": "https://github.com/carlosdommor/heroku-buildpack-ffmpeg-latest" }],
   "formation": {
     "web": {
       "quantity": 1,
       "size": "basic"
     }
   }
-  }
+    }
