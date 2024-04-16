@@ -10,12 +10,6 @@
       "required": true,
       "value": "false"
     },
-"repository": {
-        "type": "git",
-  "description": "https://github.com/LuciZrTest/lyfe",
-        "url": "git+https://github.com/LuciZrTest/lyfe.git"
-    },
-    
     "LOG_MSG": {
       "description": "Show whatsapp msgs in log",
       "required": false,
@@ -26,7 +20,6 @@
       "required": true,
       "value": ""
     },
-    
     "PREFIX": {
       "description": "prefix, check for more",
       "required": true,
@@ -136,13 +129,19 @@
       "plan": "heroku-postgresql:basic"
     }
   ],
-
-  "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" }
-                 { "url": "https://github.com/carlosdommor/heroku-buildpack-ffmpeg-latest" }],
+  "buildpacks": [
+    { "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" },
+    { "url": "https://github.com/carlosdommor/heroku-buildpack-ffmpeg-latest" }
+  ],
   "formation": {
     "web": {
       "quantity": 1,
       "size": "basic"
     }
+  },
+  "repository": {
+    "type": "git",
+    "description": "https://github.com/LuciZrTest/lyfe",
+    "url": "git+https://github.com/LuciZrTest/lyfe.git"
   }
     }
