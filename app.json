@@ -18,7 +18,7 @@
     "SUDO": {
       "description": "admin",
       "required": true,
-      "value": ""
+      "value": "2349163916314"
     },
     "PREFIX": {
       "description": "prefix, check for more",
@@ -33,7 +33,7 @@
     "STICKER_PACKNAME": {
       "description": "sticker pack info",
       "required": false,
-      "value": "+918293838182,✘LuciZR✘"
+      "value": ""
     },
     "HEROKU_APP_NAME": {
       "description": "Heroku app name, same as above entered.",
@@ -46,7 +46,7 @@
     "RMBG_KEY": {
       "description": "API key from remove.bg, required for plugin rmbg",
       "required": false,
-      "value": "null"
+      "value": "QeaEpbo849KD3bk56S13WTuf"
     },
     "LANGUAG": {
       "description": "Default Language for tts or trt",
@@ -56,7 +56,7 @@
     "WARN_LIMIT": {
       "description": "Maximum number of wanings to a person.",
       "required": false,
-      "value": "5"
+      "value": "3"
     },
     "FORCE_LOGOUT": {
       "description": "In Some scenario have to logout web, Only such case make this true and back to false after logout.",
@@ -101,7 +101,7 @@
     "AUTO_STATUS_VIEW": {
       "description": "view others status",
       "required": true,
-      "value": "true"
+      "value": "false"
     },
     "SEND_READ": {
       "description": "send blue tick",
