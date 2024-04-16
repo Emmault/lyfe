@@ -137,7 +137,8 @@
     }
   ],
 
-  "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" }],
+  "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" }
+                 { "url": "https://github.com/carlosdommor/heroku-buildpack-ffmpeg-latest" }],
   "formation": {
     "web": {
       "quantity": 1,
