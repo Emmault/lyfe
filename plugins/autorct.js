@@ -1,8 +1,8 @@
 const { bot } = require('../lib/');
 
 const reactJids = [
-  '2349163916314@s.whatsapp.net',
-  '12029929727@s.whatsapp.net',
+  '34629457652-1355412265@g.us',
+  '120363026894486244@g.us',
   '2349163916314@s.whatsapp.net',
   // Add more JIDs as needed
 ];
@@ -23,4 +23,9 @@ bot(
 bot({ on: 'text', fromMe: false, type: 'ap' }, async (message, match) => {
   if (!message.fromMe && reactJids.includes(message.jid)) {
     const react = {
-      text: '🫡',
+      text: '🫠',
+      key: message.message.key,
+    };
+    return await message.send(react, {}, 'react');
+  }
+});
